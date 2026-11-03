@@ -2,7 +2,7 @@ import streamlit as st
 from calculs import calcul_ven_puissance_batterie_chaud_monobloc
 from calculs import calcul_ven_debit_hydraulique_batterie_chaud_monobloc
 
-st.title("Dimensionnement batterie de chaud")
+st.header("Dimensionnement batterie de chaud")
 
 t1_air_neuf = st.number_input("Température air neuf (°C) :", value=-10.0, format="%.1f", key="t1_air_neuf")
 t2_air_pulse = st.number_input("Température air pulsé (°C) :", value=21.0, format="%.1f", key="t2_air_pulse")
