@@ -11,7 +11,7 @@ pages = {
         st.Page("pages/chauffage_puissance.py", title="Débit / Puissance / Delta t"),
         st.Page("pages/chauffage_dilatation.py", title="Dilatation linéique"),
     ],
-    "Ventilation 🌪️": [
+    "Ventilation 𖣘": [
         st.Page("pages/ventilation_gaines.py", title="Gaines : dimensionnement"),
         st.Page("pages/ventilation_grilles.py", title="Grilles : dimensionnement"),
         st.Page("pages/ventilation_puissance_batterie_chaud_monobloc.py", title="Batterie de chaud : dimensionnement"),
