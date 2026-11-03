@@ -12,7 +12,7 @@ pages = {
         st.Page("pages/chauffage_dilatation.py", title="- Dilatation linéique"),
     ],
     "VENTILATION 𖣘": [
-        st.Page("pages/ventilation_gaines.py", title="- Tailles de gaines"),
+        st.Page("pages/ventilation_gaines.py", title="- Taille de gaines"),
         st.Page("pages/ventilation_grilles.py", title="- Taille de grilles"),
         st.Page("pages/ventilation_puissance_batterie_chaud_monobloc.py", title="- Puissance batterie de chaud"),
     ],
