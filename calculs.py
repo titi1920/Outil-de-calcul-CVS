@@ -1,5 +1,5 @@
 f_eau = 0.86
-
+pi = 3.1416
 def calcul_hyd_debit(puissance_w, t_depart, t_retour):
     """Retourne le débit en l/h."""
     delta_t = t_depart - t_retour
@@ -32,7 +32,7 @@ def calcul_hyd_dilatation(materiau, longueur_m, t_max, t_min):
 
 def calcul_ven_gaines_circulaire_vitesse(debit_m3_h, diametre) :
     """Retourne la vitesse en m/s"""
-    surface = 3.1416 * (diametre / 2000)**2
+    surface = pi * (diametre / 2000)**2
     return debit_m3_h / surface / 3600
     
 def calcul_ven_gaines_rectangulaire_vitesse(debit_m3_h, largeur, hauteur):
@@ -41,7 +41,7 @@ def calcul_ven_gaines_rectangulaire_vitesse(debit_m3_h, largeur, hauteur):
     
 def calcul_ven_grilles_circulaire_vitesse(debit_m3_h, diametre, surface_libre) :
     """Retourne la vitesse en m/s"""
-    surface = 3.1416 * (diametre / 2000)**2
+    surface = pi * (diametre / 2000)**2
     return debit_m3_h / (surface * (surface_libre / 100)) / 3600
     
 def calcul_ven_grilles_rectangulaire_vitesse(debit_m3_h, largeur, hauteur, surface_libre):
