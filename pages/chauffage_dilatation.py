@@ -15,3 +15,11 @@ if t_max > t_min:
     st.metric("La dilatation de la conduite est de :", f"{dilatation:.1f} mm")
 else:
     st.error("La température minimale doit être inférieure à la température maximale")
+
+st.subheader("liste des coefficients de dilatation :")
+st.write("Acier = 0.0114 mm/m/°k")
+st.write("Acier inox = 0.0172 mm/m/°k")
+st.write("Fonte = 0.0100 mm/m/°k")
+st.write("Cuivre = 0.0162 mm/m/°k")
+st.write("PVC = 0.0800 mm/m/°k")
+st.write("PE = 0.2000 mm/m/°k")
