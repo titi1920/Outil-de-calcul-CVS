@@ -1,8 +1,8 @@
 import streamlit as st
 from calculs import calcul_hyd_debit, calcul_hyd_puissance, calcul_hyd_delta_t
 
-st.title("Débit / Puissance / Delta t")
-st.header("Trouver le débit")
+st.header("Débit / Puissance / Delta t")
+st.subheader("Trouver le débit")
 
 puissance_1 = st.number_input("Puissance (W)", value=1500, key="puissance_1")
 t_depart_1 = st.number_input("Température de départ (°C)", value=35, key="t_depart_1")
@@ -14,7 +14,7 @@ if t_depart_1 > t_retour_1:
 else:
     st.error("La température de départ doit être supérieure à la température de retour")
 
-st.header("Trouver la puissance")
+st.subheader("Trouver la puissance")
 
 debit_2 = st.number_input("Débit (l/h)", value=184, key="debit_2")
 t_depart_2 = st.number_input("Température de départ (°C)", value=35, key="t_depart_2")
@@ -26,7 +26,7 @@ if t_depart_2 > t_retour_2:
 else:
     st.error("La température de départ doit être supérieure à la température de retour")
 
-st.header("Trouver le delta t")
+st.subheader("Trouver le delta t")
 
 puissance_3 = st.number_input("Puissance (W)", value=1500, key="puissance_3")
 debit_3 = st.number_input("Débit (l/h)", value = 184, key="debit_3")
