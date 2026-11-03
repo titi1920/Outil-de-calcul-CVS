@@ -9,7 +9,7 @@ st.write("Jusqu'à 2'000m³/h => 4m/s")
 st.write("Jusqu'à 4'000m³/h => 5m/s")
 st.write("Jusqu'à 10'000m³/h => 6m/s")
 st.write("Depuis 10'000m³/h => 7m/s")
-st.header("Gaines circulaires")
+st.subheader("Gaines circulaires")
 
 debit1 = st.number_input("Débit en m³/h", value=84, key="debit1")
 diametre = st.number_input("Diamètre en mm", value=100, key="diametre")
