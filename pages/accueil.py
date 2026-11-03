@@ -1,9 +1,18 @@
 import streamlit as st
+import base64
+from pathlib import Path
 
 st.markdown("<h1 style='text-align: center;'>Outils de calculs CVS</h1>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align: center;'>Choisis un calcul dans le menu de gauche.</h3>", unsafe_allow_html=True)
 
-# 3 colonnes ([1, 1, 1]) = 3 colonnes de même tailles, ([2, 1, 2]) colonne du milieu 2x plus petite
-col1, col2, col3 =st.columns([1, 1, 1])
-with col2:
-   st.image("images/Logo_JM_V21.3.png", width=250)
+DOSSIER = Path(__file__).parent.parent  # dossier où se trouve accueil.py
+
+def image_base64(chemin):
+    return base64.b64encode(Path(chemin).read_bytes()).decode()
+
+img = image_base64(DOSSIER / "images" / "Logo_JM_V21.3.png")
+
+st.markdown(
+    f'<div style="text-align:center;"><img src="data:image/png;base64,{img}" style="max-width:250px; width:100%; height:auto;"></div>',
+    unsafe_allow_html=True,
+)
