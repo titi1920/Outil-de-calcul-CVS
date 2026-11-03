@@ -2,8 +2,8 @@ import streamlit as st
 from calculs import calcul_ven_gaines_circulaire_vitesse
 from calculs import calcul_ven_gaines_rectangulaire_vitesse
 
-st.title("Dimensionnement des gaines")
-st.header("Vistesses admissibles dans les gaines")
+st.header("Dimensionnement des gaines")
+st.subheader("Vistesses admissibles dans les gaines")
 st.write("Jusqu'à 1'000m³/h => 3m/s")
 st.write("Jusqu'à 2'000m³/h => 4m/s")
 st.write("Jusqu'à 4'000m³/h => 5m/s")
@@ -20,7 +20,7 @@ if debit1 > 0:
 else:
     st.error("le débit doit être supérieur à 0")
     
-st.header("Gaines rectangulaires")
+st.subheader("Gaines rectangulaires")
 
 debit2 = st.number_input("Débit en m³/h", value=107, key="debit2")
 largeur = st.number_input("largeur en mm", value=100, key="largeur")
