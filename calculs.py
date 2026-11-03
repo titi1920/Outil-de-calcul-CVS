@@ -16,12 +16,12 @@ def calcul_hyd_delta_t(debit_l_h, puissance_w):
     return puissance_w * f_eau / debit_l_h
     
 COEFFICIENTS_DILATATION = {
-    "Acier (0.0114 mm/m/k)" : 0.0114,
-    "Acier inox (0.0172 mm/m/k)" : 0.0172,
-    "Fonte (0.0100 mm/m/k)" : 0.0100,
-    "Cuivre (0.0162 mm/m/k)" : 0.0162,
-    "PVC (0.0800 mm/m/k)" : 0.0800,
-    "PE (0.2000 mm/m/k)" : 0.2000,
+    "Acier 0.0114 mm/m/k" : 0.0114,
+    "Acier inox 0.0172 mm/m/k" : 0.0172,
+    "Fonte 0.0100 mm/m/k" : 0.0100,
+    "Cuivre 0.0162 mm/m/k" : 0.0162,
+    "PVC 0.0800 mm/m/k" : 0.0800,
+    "PE 0.2000 mm/m/k" : 0.2000,
 }
 
 def calcul_hyd_dilatation(materiau, longueur_m, t_max, t_min):
