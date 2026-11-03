@@ -1,18 +1,18 @@
-f = 0.86
+f_eau = 0.86
 
 def calcul_hyd_debit(puissance_w, t_depart, t_retour):
     """Retourne le débit en l/h."""
     delta_t = t_depart - t_retour
-    return puissance_w * f / delta_t
+    return puissance_w * f_eau / delta_t
     
 def calcul_hyd_puissance(debit_l_h, t_depart, t_retour):
     """Retourne la puissance en W."""
     delta_t = t_depart - t_retour
-    return debit_l_h / f * delta_t
+    return debit_l_h / f_eau * delta_t
     
 def calcul_hyd_delta_t(debit_l_h, puissance_w):
     """Retourne le delta t en °K"""
-    return puissance_w * f / debit_l_h
+    return puissance_w * f_eau / debit_l_h
     
 COEFFICIENTS_DILATATION = {
     "Acier" : 0.0114,
@@ -27,6 +27,8 @@ def calcul_hyd_dilatation(materiau, longueur_m, t_max, t_min):
     """Retourne la dilatation en mm."""
     coefficient = COEFFICIENTS_DILATATION[materiau]
     return coefficient * longueur_m * (t_max - t_min)
+
+
 
 def calcul_ven_gaines_circulaire_vitesse(debit_m3_h, diametre) :
     """Retourne la vitesse en m/s"""
@@ -48,20 +50,22 @@ def calcul_ven_grilles_rectangulaire_vitesse(debit_m3_h, largeur, hauteur, surfa
     
 def calcul_ven_puissance_batterie_chaud_monobloc(t1_air_neuf, t2_air_pulse, t3_air_extrait, rendement, debit):
     """Retourne la puissance de la batterie de chaud"""
-    return debit * 0.32 * t2_air_pulse - (t1_air_neuf + ((rendement / 100) * (t3_air_extrait - t1_air_neuf)))
+    return debit * 0.32 * (t2_air_pulse - (t1_air_neuf + ((rendement / 100) * (t3_air_extrait - t1_air_neuf))))
 
 def calcul_ven_debit_hydraulique_batterie_chaud_monobloc(q_batterie, t_depart, t_retour):
     """Retourne le débit hydraulique de la batterie de chaud"""
-    return q_batterie * 0.86 / (t_depart - t_retour)
-    
+    return q_batterie * f_eau / (t_depart - t_retour)
+
+
+
 def calcul_san_puissance_groupe_ecs (t_ef, t_ec, contenance, temps_chauffe):
     """Retourne la puissance du groupe chauffage ecs"""
     return (contenance * 4.186 * (t_ec - t_ef))/(temps_chauffe * 60)
     
 def calcul_san_debit_groupe_ecs_cote_chauffage (q_ecs, ch_depart, ch_retour):
     """Retourne le débit du groupe chauffage ecs"""
-    return q_ecs * 0.86 / (ch_depart - ch_retour)
+    return q_ecs * f_eau / (ch_depart - ch_retour)
     
 def calcul_san_debit_groupe_ecs_cote_sanitaire (q_ecs, t_ec, t_ef):
     """Retourne le débit du groupe chauffage ecs"""
-    return q_ecs * 0.86 / (t_ec - t_ef)
+    return q_ecs * f_eau / (t_ec - t_ef)
