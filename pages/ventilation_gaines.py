@@ -7,7 +7,7 @@ st.header("Vistesses admissibles dans les gaines")
 st.write("Jusqu'à 1'000m³/h => 3m/s")
 st.write("Jusqu'à 2'000m³/h => 4m/s")
 st.write("Jusqu'à 4'000m³/h => 5m/s")
-st.write("Jusqu'à 1'0000m³/h => 6m/s")
+st.write("Jusqu'à 10'000m³/h => 6m/s")
 st.write("Depuis 10'000m³/h => 7m/s")
 st.header("Gaines circulaires")
 
