@@ -2,8 +2,8 @@ import streamlit as st
 from calculs import calcul_ven_grilles_circulaire_vitesse
 from calculs import calcul_ven_grilles_rectangulaire_vitesse
 
-st.title("Dimensionnement des grilles")
-st.header("Grilles circulaires")
+st.header("Dimensionnement des grilles")
+st.subheader("Grilles circulaires")
 
 debit1 = st.number_input("Débit en m³/h", value=84, key="debit1")
 diametre = st.number_input("Diamètre en mm", value=100, key="diametre")
@@ -15,7 +15,7 @@ if debit1 > 0:
 else:
     st.error("le débit doit être supérieur à 0")
     
-st.header("Grilles rectangulaires")
+st.subheader("Grilles rectangulaires")
 
 debit2 = st.number_input("Débit en m³/h", value=107, key="debit2")
 largeur = st.number_input("largeur en mm", value=100, key="largeur")
