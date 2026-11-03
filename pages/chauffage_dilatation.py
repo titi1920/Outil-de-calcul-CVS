@@ -1,8 +1,8 @@
 import streamlit as st
 from calculs import calcul_hyd_dilatation, COEFFICIENTS_DILATATION
 
-st.title("Dilatation linéique")
-st.header("Trouver la dilatation de la conduite")
+st.header("Dilatation linéique")
+st.subheader("Trouver la dilatation de la conduite")
 
 materiau = st.selectbox("Matériau", list(COEFFICIENTS_DILATATION.keys()))
 
