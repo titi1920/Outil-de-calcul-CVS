@@ -3,7 +3,7 @@ from calculs import calcul_san_puissance_groupe_ecs
 from calculs import calcul_san_debit_groupe_ecs_cote_chauffage
 from calculs import calcul_san_debit_groupe_ecs_cote_sanitaire
 
-st.title("Calcul puissance groupe boiler")
+st.header("Calcul puissance groupe boiler")
 
 t_ef = st.number_input("Température eau froide (°C)", value=10, key="t_ef")
 t_ec = st.number_input("Température eau chaude (°C)", value=60, key="t_ec")
