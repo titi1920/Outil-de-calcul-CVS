@@ -1,5 +1,6 @@
 f_eau = 0.86
 pi = 3.1416
+
 def calcul_hyd_debit(puissance_w, t_depart, t_retour):
     """Retourne le débit en l/h."""
     delta_t = t_depart - t_retour
