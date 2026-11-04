@@ -4,7 +4,7 @@ from calculs import calcul_hyd_dilatation, COEFFICIENTS_DILATATION
 st.header("Dilatation linéique")
 st.subheader("Trouver la dilatation de la conduite")
 
-materiau = st.selectbox("Matériau", list(COEFFICIENTS_DILATATION.keys()))
+materiau = st.selectbox("Matériau :", list(COEFFICIENTS_DILATATION.keys()))
 
 longueur = st.number_input("Longueur de la conduite (m)", value=25, key="longueur")
 t_min = st.number_input("Température minimale de l'eau (°C)", value=10, key="t_min")
