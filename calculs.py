@@ -1,4 +1,6 @@
+c_eau = 4.186
 f_eau = 0.86
+f_air = 0.32
 pi = 3.1416
 
 def calcul_hyd_debit(puissance_w, t_depart, t_retour):
@@ -51,7 +53,7 @@ def calcul_ven_grilles_rectangulaire_vitesse(debit_m3_h, largeur, hauteur, surfa
     
 def calcul_ven_puissance_batterie_chaud_monobloc(t1_air_neuf, t2_air_pulse, t3_air_extrait, rendement, debit):
     """Retourne la puissance de la batterie de chaud"""
-    return debit * 0.32 * (t2_air_pulse - (t1_air_neuf + ((rendement / 100) * (t3_air_extrait - t1_air_neuf))))
+    return debit * f_air * (t2_air_pulse - (t1_air_neuf + ((rendement / 100) * (t3_air_extrait - t1_air_neuf))))
 
 def calcul_ven_debit_hydraulique_batterie_chaud_monobloc(q_batterie, t_depart, t_retour):
     """Retourne le débit hydraulique de la batterie de chaud"""
@@ -61,7 +63,7 @@ def calcul_ven_debit_hydraulique_batterie_chaud_monobloc(q_batterie, t_depart, t
 
 def calcul_san_puissance_groupe_ecs (t_ef, t_ec, contenance, temps_chauffe):
     """Retourne la puissance du groupe chauffage ecs"""
-    return (contenance * 4.186 * (t_ec - t_ef))/(temps_chauffe * 60)
+    return (contenance * c_eau * (t_ec - t_ef))/(temps_chauffe * 60)
     
 def calcul_san_debit_groupe_ecs_cote_chauffage (q_ecs, ch_depart, ch_retour):
     """Retourne le débit du groupe chauffage ecs"""
