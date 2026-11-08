@@ -4,11 +4,11 @@ from calculs import calcul_ven_gaines_rectangulaire_vitesse
 
 st.header("Dimensionnement des gaines")
 st.subheader("Vistesses admissibles dans les gaines")
-st.write("Jusqu'à 1'000m³/h => 3m/s")
-st.write("Jusqu'à 2'000m³/h => 4m/s")
-st.write("Jusqu'à 4'000m³/h => 5m/s")
-st.write("Jusqu'à 10'000m³/h => 6m/s")
-st.write("Depuis 10'000m³/h => 7m/s")
+st.write("3 m/s jusqu'à 1'000m³/h")
+st.write("4 m/s jusqu'à 2'000m³/h")
+st.write("5 m/s jusqu'à 4'000m³/h")
+st.write("6 m/s jusqu'à 10'000m³/h")
+st.write("7 m/s depuis 10'000m³/h")
 st.subheader("Gaines circulaires")
 
 debit1 = st.number_input("Débit en m³/h", value=84, key="debit1")
