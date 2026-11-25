@@ -17,9 +17,17 @@ def calcul_hyd_delta_t(debit_l_h, puissance_w):
     """Retourne le delta t en °K"""
     return puissance_w * f_eau / debit_l_h
 
-def calcul_hyd_autorite(kvs, puissance_kw, t_depart, t_retour, delta_p_debit_variable_mce):
+def calcul_hyd_debit_m3_h(puissance_kw, t_depart, t_retour):
+    """Retourne le débit en m³/h."""
+    return puissance_kw * f_eau / (t_depart - t_retour)
+
+def calcul_deltapv100(debit_m3_h, kvs):
+    """retourne le deltaPv100 en kPa"""
+    return ((debit_m3_h / kvs) * (debit_m3_h / kvs)) * 100
+    
+def calcul_hyd_autorite(deltapv100, deltap_debit_variable_mce):
     """Retourne l'autorité de la vanne"""
-    return ((((puissance_kw * f_eau / (t_depart - t_retour)) / kvs) * ((puissance_kw * f_eau / (t_depart - t_retour)) / kvs)) * 100) / (((((puissance_kw * f_eau /(t_depart - t_retour)) / kvs) * ((puissance_kw * f_eau /(t_depart - t_retour)) / kvs)) * 100) + (delta_p_debit_variable_mce * 10))
+    return deltapv100 / (deltapv100 + (deltap_debit_variable_mce * 10))
 
 COEFFICIENTS_DILATATION = {
     "Acier = 0.0114 mm/m/k" : 0.0114,
