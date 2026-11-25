@@ -10,6 +10,7 @@ pages = {
     "CHAUFFAGE 🔥️": [
         st.Page("pages/chauffage_puissance.py", title="- Débit / Puissance / Delta t"),
         st.Page("pages/chauffage_dilatation.py", title="- Dilatation linéique"),
+        st.Page("pages/chauffage_autorite.py", title="- Autorité d'une vanne"),
     ],
     "VENTILATION 𖣘": [
         st.Page("pages/ventilation_gaines.py", title="- Taille de gaines"),
