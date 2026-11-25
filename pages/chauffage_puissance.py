@@ -29,7 +29,8 @@ else:
 st.subheader("Trouver le delta t")
 
 puissance_3 = st.number_input("Puissance (W)", value=1500, key="puissance_3")
-debit_3 = st.number_input("Débit (l/h)", value = 184, key="debit_3")
-
-delta_t = calcul_hyd_delta_t(debit_3, puissance_3)
-st.metric("Delta t =", f"{delta_t:.1f} °K")
+if debit_3 > 0:
+    delta_t = calcul_hyd_delta_t(debit_3, puissance_3)
+    st.metric("Delta t =", f"{delta_t:.0f} °K")
+else:
+    st.error("La puissance et le débit doit être supérieur à 0 !")
