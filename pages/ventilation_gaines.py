@@ -1,33 +1,36 @@
 import streamlit as st
 from calculs import calcul_ven_gaines_circulaire_vitesse
 from calculs import calcul_ven_gaines_rectangulaire_vitesse
+from utils import widget_persistant
 
 st.header("Dimensionnement des gaines")
+nom_affaire = widget_persistant(st.text_input, "Nom du chantier :", "ventilation_gaines_nom_affaire", "")
+nom_reseau = widget_persistant(st.text_input, "Nom du réseau :", "ventilation_gaines_nom_reseau", "")
 st.subheader("Vistesses admissibles dans les gaines")
-st.write("3 m/s jusqu'à 1'000m³/h")
-st.write("4 m/s jusqu'à 2'000m³/h")
-st.write("5 m/s jusqu'à 4'000m³/h")
-st.write("6 m/s jusqu'à 10'000m³/h")
-st.write("7 m/s depuis 10'000m³/h")
+st.write("Jusqu'à 1'000m³/h => 3m/s")
+st.write("Jusqu'à 2'000m³/h => 4m/s")
+st.write("Jusqu'à 4'000m³/h => 5m/s")
+st.write("Jusqu'à 10'000m³/h => 6m/s")
+st.write("Depuis 10'000m³/h => 7m/s")
 st.subheader("Gaines circulaires")
 
-debit1 = st.number_input("Débit en m³/h", value=84, key="debit1")
-diametre = st.number_input("Diamètre en mm", value=100, key="diametre")
+debit1 = widget_persistant(st.number_input, "Débit en m³/h", "ventilation_gaines_debit1", 84.0, format="%.0f")
+diametre = widget_persistant(st.number_input, "Diamètre en mm", "ventilation_gaines_diametre", 100.0, format="%.0f")
 
 if debit1 > 0:
     vitesse1 = calcul_ven_gaines_circulaire_vitesse(debit1, diametre)
-    st.metric("Vitesse =", f"{vitesse1:.2f} m/s")
+    st.metric("vitesse =", f"{vitesse1:.2f} m/s")
 else:
-    st.error("Le débit doit être supérieur à 0.")
+    st.error("le débit doit être supérieur à 0")
     
 st.subheader("Gaines rectangulaires")
 
-debit2 = st.number_input("Débit en m³/h", value=107, key="debit2")
-largeur = st.number_input("Largeur en mm", value=100, key="largeur")
-hauteur = st.number_input("Hauteur en mm", value=100, key="hauteur")
+debit2 = widget_persistant(st.number_input, "Débit en m³/h", "ventilation_gaines_debit2", 107.0, format="%.0f")
+largeur = widget_persistant(st.number_input, "largeur en mm", "ventilation_gaines_largeur", 100.0, format="%.0f")
+hauteur = widget_persistant(st.number_input, "hauteur en mm", "ventilation_gaines_hauteur", 100.0, format="%.0f")
 
 if debit2 > 0:
     vitesse2 = calcul_ven_gaines_rectangulaire_vitesse(debit2, largeur, hauteur)
-    st.metric("Vitesse =", f"{vitesse2:.2f} m/s")
+    st.metric("vitesse =", f"{vitesse2:.2f} m/s")
 else:
-    st.error("Le débit doit être supérieur à 0.")
+    st.error("le débit doit être supérieur à 0")
