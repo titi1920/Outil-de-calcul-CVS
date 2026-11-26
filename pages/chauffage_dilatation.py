@@ -1,14 +1,16 @@
 import streamlit as st
 from calculs import calcul_hyd_dilatation, COEFFICIENTS_DILATATION
+from utils import widget_persistant
 
 st.header("Dilatation linéique")
+nom_affaire = widget_persistant(st.text_input, "Nom du chantier :", "chauffage_dilatation_nom_affaire", "")
+nom_reseau = widget_persistant(st.text_input, "Nom du réseau :", "chauffage_dilatation_nom_reseau", "")
 st.subheader("Trouver la dilatation de la conduite")
 
-materiau = st.selectbox("Matériau :", list(COEFFICIENTS_DILATATION.keys()))
-
-longueur = st.number_input("Longueur de la conduite (m)", value=25, key="longueur")
-t_min = st.number_input("Température minimale de l'eau (°C)", value=10, key="t_min")
-t_max = st.number_input("Température maximale de l'eau (°C)", value=50, key="t_max")
+materiau = widget_persistant(st.selectbox, "Matériau", "chauffage_dilatation_materiau", list(COEFFICIENTS_DILATATION.keys())[0], options=list(COEFFICIENTS_DILATATION.keys()))
+longueur = widget_persistant(st.number_input, "Longueur de la conduite (m)", "chauffage_dilatation_longueur", 25.0, format="%.0f")
+t_min = widget_persistant(st.number_input, "Température minimale de l'eau (°C)", "chauffage_dilatation_t_min", 10.0, format="%.0f")
+t_max = widget_persistant(st.number_input, "Température maximale de l'eau (°C)", "chauffage_dilatation_t_max", 50.0, format="%.0f")
 
 if t_max > t_min:
     dilatation = calcul_hyd_dilatation(materiau, longueur, t_max, t_min)
