@@ -2,7 +2,7 @@ import streamlit as st
 from calculs import calcul_san_puissance_groupe_ecs
 from calculs import calcul_san_debit_groupe_ecs_cote_chauffage
 from calculs import calcul_san_debit_groupe_ecs_cote_sanitaire
-from utils import widget_persistant
+from utils import widget_persistant, bouton_export_txt
 
 st.header("Calcul puissance groupe boiler")
 nom_affaire = widget_persistant(st.text_input, "Nom du chantier :", "sanitaire_puissance_nom_affaire", "")
@@ -34,3 +34,20 @@ else:
     
     debit2 = calcul_san_debit_groupe_ecs_cote_sanitaire(puissance, t_ec, t_ef)
     st.metric("Débit côté sanitaire :", f"{debit2:.3f} m³/h")
+
+bouton_export_txt(
+    "Puissance_groupe_boiler", nom_affaire, nom_reseau,
+    entrees={
+        "Température eau froide (°C)": f"{t_ef:.0f}",
+        "Température eau chaude (°C)": f"{t_ec:.0f}",
+        "Température départ chauffage (°C)": f"{ch_depart:.0f}",
+        "Température retour chauffage (°C)": f"{ch_retour:.0f}",
+        "Contenance boiler (litres)": f"{contenance:.0f}",
+        "Temps de chauffe (min)": f"{temps_de_chauffe:.0f}",
+    },
+    resultats={
+        "Puissance (kW)": f"{puissance:.3f}",
+        "Débit chauffage (m³/h)": f"{debit1:.3f}",
+        "Débit sanitaire (m³/h)": f"{debit2:.3f}",
+    },
+)
