@@ -1,7 +1,7 @@
 import streamlit as st
 from calculs import calcul_ven_grilles_circulaire_vitesse
 from calculs import calcul_ven_grilles_rectangulaire_vitesse
-from utils import widget_persistant
+from utils import widget_persistant, bouton_export_txt
 
 st.header("Dimensionnement des grilles")
 nom_affaire = widget_persistant(st.text_input, "Nom du chantier :", "ventilation_grilles_nom_affaire", "")
@@ -36,3 +36,32 @@ elif surface_libre2 <= 0:
 else:    
     vitesse2 = calcul_ven_grilles_rectangulaire_vitesse(debit2, largeur, hauteur, surface_libre2)
     st.metric("vitesse =", f"{vitesse2:.2f} m/s")
+
+bouton_export_txt(
+    "Tailles_de_grilles", nom_affaire, nom_reseau,
+    sections=[
+        (
+            "Grilles circulaires",
+            {
+                "Débit (m³/h)": f"{debit1:.0f}",
+                "Diamètre gaine (mm)": f"{diametre:.0f}",
+                "Surface libre (%)": f"{surface_libre1:.0f}",
+            },
+            {
+                "La vitesse est de (m/s)": f"{vitesse1:.2f}" if vitesse1 is not None else "-",
+            },
+        ),
+        (
+            "Grilles quadratiques",
+            {
+                "Débit (l/h)": f"{debit2:.0f}",
+                "Largeur gaine (mm)": f"{largeur:.0f}",
+                "hauteur gaine (mm)": f"{hauteur:.0f}",
+                "Surface libre (%)": f"{surface_libre2:.0f}",
+            },
+            {
+                "La vitesse est de (m/s)": f"{vitesse2:.2f}" if vitesse2 is not None else "-",
+            },
+        ),
+    ],
+)
