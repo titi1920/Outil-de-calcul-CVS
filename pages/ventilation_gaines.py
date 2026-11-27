@@ -1,7 +1,7 @@
 import streamlit as st
 from calculs import calcul_ven_gaines_circulaire_vitesse
 from calculs import calcul_ven_gaines_rectangulaire_vitesse
-from utils import widget_persistant
+from utils import widget_persistant, bouton_export_txt
 
 st.header("Dimensionnement des gaines")
 nom_affaire = widget_persistant(st.text_input, "Nom du chantier :", "ventilation_gaines_nom_affaire", "")
@@ -34,3 +34,30 @@ if debit2 > 0:
     st.metric("vitesse =", f"{vitesse2:.2f} m/s")
 else:
     st.error("le débit doit être supérieur à 0")
+    
+bouton_export_txt(
+    "Tailles_de_gaines", nom_affaire, nom_reseau,
+    sections=[
+        (
+            "Gaines circulaires",
+            {
+                "Débit (m³/h)": f"{debit1:.0f}",
+                "Diamètre gaine (mm)": f"{diametre:.0f}",
+            },
+            {
+                "La vitesse est de (m/s)": f"{vitesse1:.2f}" if vitesse1 is not None else "-",
+            },
+        ),
+        (
+            "Gaines quadratiques",
+            {
+                "Débit (l/h)": f"{debit2:.0f}",
+                "Largeur gaine (mm)": f"{largeur:.0f}",
+                "hauteur gaine (mm)": f"{hauteur:.0f}",
+            },
+            {
+                "La vitesse est de (m/s)": f"{vitesse2:.2f}" if vitesse2 is not None else "-",
+            },
+        ),
+    ],
+)
