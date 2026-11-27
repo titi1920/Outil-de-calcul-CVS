@@ -1,6 +1,6 @@
 import streamlit as st
 from calculs import calcul_hyd_dilatation, COEFFICIENTS_DILATATION
-from utils import widget_persistant
+from utils import widget_persistant, bouton_export_txt
 
 st.header("Dilatation linéique")
 nom_affaire = widget_persistant(st.text_input, "Nom du chantier :", "chauffage_dilatation_nom_affaire", "")
@@ -17,3 +17,16 @@ if t_max > t_min:
     st.metric("La dilatation de la conduite est de :", f"{dilatation:.1f} mm")
 else:
     st.error("La température minimale doit être inférieure à la température maximale")
+    
+bouton_export_txt(
+    "Dilatation_lineique", nom_affaire, nom_reseau,
+    entrees={
+        "Matériau": materiau,
+        "Longueur (m)": f"{longueur:.0f}",
+        "Température minimale (°C)": f"{t_min:.0f}",
+        "Température maximale (°C)": f"{t_max:.0f}",
+    },
+    resultats={
+        "La dilatation de la conduite est de (mm)": f"{dilatation:.1f}",
+    },
+)
